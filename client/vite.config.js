@@ -29,6 +29,7 @@ function startBackend() {
 }
 
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/SEMS/' : '/',
   plugins: [startBackend(), react(), tailwindcss()],
   server: {
     port: 5173,
