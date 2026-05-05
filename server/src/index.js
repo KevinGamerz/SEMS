@@ -15,7 +15,7 @@ import predictionRoutes from './routes/predictions.js';
 import reportRoutes from './routes/reports.js';
 import dashboardRoutes from './routes/dashboard.js';
 import { apiLimiter } from './middleware/rateLimiter.js';
-import { startCronJobs } from './cron/jobs.js';
+import { startCronJobs } from './utils/jobs.js';
 
 config();
 

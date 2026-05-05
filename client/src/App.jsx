@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { useAuthStore } from './stores/authStore';
-import AppShell from './components/layout/AppShell';
+import AppShell from './components/AppShell';
 import LoginPage from './pages/LoginPage';
 import CityDashboard from './pages/dashboard/CityDashboard';
 import ZoneDashboard from './pages/dashboard/ZoneDashboard';
