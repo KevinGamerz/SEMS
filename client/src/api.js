@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { useAuthStore } from './stores/authStore';
 
+// Use environment variable for API URL, fallback to /api for local development
+const apiUrl = import.meta.env.VITE_API_URL || '/api';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: apiUrl,
   headers: { 'Content-Type': 'application/json' }
 });
 
@@ -24,7 +27,7 @@ api.interceptors.response.use(
       originalRequest._retry = true;
       try {
         const refreshToken = useAuthStore.getState().refreshToken;
-        const { data } = await axios.post('/api/auth/refresh', { refreshToken });
+        const { data } = await axios.post(`${apiUrl}/auth/refresh`, { refreshToken });
         useAuthStore.getState().setTokens(data.accessToken, data.refreshToken);
         originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
         return api(originalRequest);
